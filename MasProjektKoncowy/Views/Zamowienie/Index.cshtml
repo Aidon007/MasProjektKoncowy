@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MasProjektKoncowy.ViewModels.ZamowienieViewModel>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>Lista zamówień</h1>
+@if (Model.Count() > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zamowienie.ZamowienieId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zamowienie.Cena)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zamowienie.Status)
+                </th>
+                <th>
+                    Imie
+                </th>
+                <th>
+                    Nazwisko
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zamowienie.ZamowienieId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zamowienie.Cena)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zamowienie.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Osoba.Imie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Osoba.Nazwisko)
+                    </td>
+                    <td>
+                        <a asp-action="Szczegoly" asp-route-id="@item.Zamowienie.ZamowienieId">Szczegoły</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h5 style="color:red">Brak zamówień</h5>
+}
