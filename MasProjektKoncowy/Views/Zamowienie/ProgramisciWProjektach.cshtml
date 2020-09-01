@@ -6,24 +6,47 @@
 
 <h3>Projekt</h3>
 <dl class="row">
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.Projekt.Projekt.Nazwa)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Projekt.Projekt.Nazwa)
-    </dd>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.Projekt.Projekt.Numer)
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Projekt.Projekt.Numer)
-    </dd>
-    <dt class="col-sm-2">
-        Typ projektu
-    </dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(model => model.Projekt.Projekt.TypProjektu)
-    </dd>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Projekt.Projekt.Nazwa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Projekt.Projekt.Nazwa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Projekt.Projekt.Numer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Projekt.Projekt.Numer)
+        </dd>
+        <dt class="col-sm-2">
+            Typ projektu
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Projekt.Projekt.TypProjektu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Projekt.Projekt.Opis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Projekt.Projekt.Opis)
+        </dd>
+        <dt class="col-sm-2">
+            Menedzer ID
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Projekt.Menedzer.OsobaId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Projekt.Menedzer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Projekt.Osoba.Imie) @Html.DisplayFor(model => model.Projekt.Osoba.Nazwisko)
+        </dd>
+    </dl>
+
 </dl>
 <hr />
 <h4>Programisci w projekcie</h4>
@@ -63,10 +86,13 @@
             }
         </tbody>
     </table>
-    <a asp-action="Index">Wróc do listy zamówień</a>
+    <div>
+        <a asp-action="Index">Wróc do listy zamówień</a> |
+        <a asp-action="Szczegoly" asp-route-id="@Model.Projekt.Projekt.ProjektId">Szczegoły Zamówienia</a>
+    </div>
 }
 else
 {
     <h5 style="color:red">Brak programistów zaangażowanych w dany project</h5>
-    <a asp-action="Index">Wróc do listy zamówień</a> 
+    <a asp-action="Index">Wróc do listy zamówień</a>
 }

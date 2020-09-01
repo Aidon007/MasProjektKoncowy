@@ -10,7 +10,6 @@ namespace MasProjektKoncowy.Views.Shared.Zamowienie.Controllers
 {
     public class ZamowienieController : Controller
     {
-        //W KLASIE PROJEKT POPRAWIC ZEBY BYLO Projekt.ProgProjektasoc
 
         private readonly IDbZamowienia _dbZamowienia;
         public ZamowienieController(IDbZamowienia dbZamowienia)
@@ -36,18 +35,6 @@ namespace MasProjektKoncowy.Views.Shared.Zamowienie.Controllers
         }
 
         [HttpGet]
-        [Route("Zamowienie/InfoProjekt/{id}", Name = "InfoProjekt")]
-        public IActionResult ProjektyWZamowieniach(int? id)
-        {
-            if (id == null)
-            {
-                return Index();
-            }
-
-            return View(_dbZamowienia.GetProjekt(id));
-        }
-
-        [HttpGet]
         [Route("Zamowienie/InfoProgramisci/{id}", Name = "InfoProgramisci")]
         public IActionResult ProgramisciWProjektach(int? id)
         {
@@ -55,10 +42,8 @@ namespace MasProjektKoncowy.Views.Shared.Zamowienie.Controllers
             {
                 return NotFound();
             }
-            var project = _dbZamowienia.GetProjekt(id);
-            
-            var programisci = _dbZamowienia.GetProgramisciWProjekcie(id).ToList();
-            var result = new ProgramisciViewModel { Projekt = project, Programisci = programisci };
+
+            var result = _dbZamowienia.GetProgramisciWProjekcie(id);
 
             return View(result);
         }

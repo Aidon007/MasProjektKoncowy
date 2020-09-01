@@ -12,6 +12,6 @@ namespace MasProjektKoncowy.Services.Interfaces
         public IEnumerable<ZamowienieViewModel> GetZamowienia();
         public ZamowienieViewModel GetSzczegolyZamowienie(int ?id);
         public ProjektViewModel GetProjekt(int? id);
-        public IEnumerable<ProgramistaViewModel> GetProgramisciWProjekcie(int? id);
+        public ProgramisciViewModel GetProgramisciWProjekcie(int? id);
     }
 }

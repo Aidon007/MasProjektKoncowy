@@ -68,9 +68,11 @@ namespace MasProjektKoncowy.Services.Implementations
             return result;
         }
 
-        public IEnumerable<ProgramistaViewModel> GetProgramisciWProjekcie(int? id)
+        public ProgramisciViewModel GetProgramisciWProjekcie(int? id)
         {
-            var result = (from Projekt in _context.Projekty
+            //projekt.programisci
+            var projekt = GetProjekt(id); 
+            var programisci = (from Projekt in _context.Projekty
                           join PPA in _context.ProgProjectAsoc on Projekt.ProjektId equals PPA.ProjektId
                           join Programista in _context.Programisci on PPA.OsobaId equals Programista.OsobaId
                           join Osoba in _context.Osoby on Programista.OsobaId equals Osoba.OsobaId
@@ -81,7 +83,7 @@ namespace MasProjektKoncowy.Services.Implementations
                               Programista = p.Programista,
                               Osoba = p.Osoba
                           }).ToList();
-
+            var result = new ProgramisciViewModel { Projekt = projekt, Programisci = programisci };
             return result;
         }
 

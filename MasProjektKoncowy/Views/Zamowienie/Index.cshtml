@@ -25,32 +25,37 @@
                 <th>
                     Nazwisko
                 </th>
-                <th></th>
+                <th>Zamowienie</th>
+                <th>Projekt</th>
+
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Zamowienie.ZamowienieId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Zamowienie.Cena)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Zamowienie.Status)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Osoba.Imie)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Osoba.Nazwisko)
-                    </td>
-                    <td>
-                        <a asp-action="Szczegoly" asp-route-id="@item.Zamowienie.ZamowienieId">Szczegoły</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zamowienie.ZamowienieId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zamowienie.Cena)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zamowienie.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Osoba.Imie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Osoba.Nazwisko)
+                </td>
+                <td>
+                    <a asp-action="Szczegoly" asp-route-id="@item.Zamowienie.ZamowienieId">Szczegoły</a>
+                </td>
+                <td>
+                    <a asp-action="InfoProgramisci" asp-route-id="@item.Zamowienie.ZamowienieId">Info</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
